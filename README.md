@@ -212,7 +212,24 @@ def generator(samples, batch_size=32):
             yield sklearn.utils.shuffle(X_train, y_train)
 ```
 
-I have used callback in the fitting proccess in order to choose the best model generated. I have deffined a ModelCheckpoint that saves the best model up to the actual epoch.
+The code above augment the data in a number os ways.
+I show a image for every type of data augmentation:
+* flip: flip the image in order to balance movement.
+![alt text](images/data_augmentation/flip.png "flip data augmentation")
+* shift_left: shift image to the left in order to do a kind of recovery data
+![alt text](images/data_augmentation/shift_left.png "shift_left data augmentation")
+* shift_right: shift image to the right in order to do a kind of recovery data
+![alt text](images/data_augmentation/shift_right.png "shift_right data augmentation")
+* brightness: change brightness in order to make it brightness data invariant
+![alt text](images/data_augmentation/brightness.png "brightness data augmentation")
+* shadow: add shadow to image in order to make it shadow data invariant
+![alt text](images/data_augmentation/shadow.png "shadow data augmentation")
+* usual: just usual image from the dataset
+![alt text](images/data_augmentation/usual.png "usual data augmentation")
+
+This data augmentation has been paramount in order to make the neuralnetwork work properly. 
+
+In order to get the best model I have done a kind of earlystoping, since I have used a callback in the fitting proccess in order to choose the best model generated. I have deffined a ModelCheckpoint that saves the best model up to the actual epoch.
 
 The best model is:
 
